@@ -1,23 +1,33 @@
+GROUP_LENGTH: int = 245
+
 from pathlib import Path
 import time
 import sys
 import os
+from typing import Optional
+
+os.system("cls")
 
 sys.path.append(str(Path(__file__).parent.parent))
-os.environ["HCGame_DEBUG_MODE"] = "1"
+# os.environ["HCGame_DEBUG_MODE"] = "1"
 
 import HCGame
 
 print(f"测试函数add结果:{HCGame.add(10, 15)}")
+
 HCGame.display.create_window()
-group = list()
+
+
+group: list[Optional[HCGame.Role]] = [None] * GROUP_LENGTH
 surface = HCGame.load_image_as_surface(str(Path(__file__).parent / "test1.png"))
 
-for i in range(200):
+for i in range(GROUP_LENGTH):
     temp = HCGame.Role()
     temp.load_image_from_surface(surface)
     temp.buffer()
-    group.append(temp)
+    # group.append(temp)
+    print(temp.costume_number)
+    group[i] = temp
 
 
 def get_fps():
@@ -45,4 +55,4 @@ while not HCGame.has_quit_event():
     now_fps, max_fps = next(fps)
     print(f"\rnow_fps={now_fps: <10.2f} max_fps={max_fps: <15.2f}", end="")
     # time.sleep(0.02)
-print("\n程序跑到这啦！")
+print("\n程序跑到这啦! ")

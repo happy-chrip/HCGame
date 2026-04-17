@@ -12,7 +12,7 @@ import HCGame
 print(f"测试函数add结果:{HCGame.add(10, 15)}")
 HCGame.display.create_window()
 
-group = list()
+group: list[HCGame.Role] = list()
 temp_surface = HCGame.load_image_as_surface(str(Path(__file__).parent / "小可走路2.png"))
 for i in range(1000):
     a = HCGame.Role()
@@ -41,6 +41,7 @@ while not HCGame.has_quit_event():
     for i in group:
         i.position.x = random.randint(0, 800)
         i.position.y = random.randint(0, 500)
+    
     random.choice(group).collide(random.choice(group))
 
 
