@@ -376,7 +376,7 @@ static int HC_Role_set_costume_number(HC_Role *self, PyObject *new_value,
     self->costume_number = Py_NewRef(new_value);
     return 0;
   }
-  PyErr_SetString(PyExc_TypeError, "Role.costume_number value must be a int.");
+  PyErr_SetString(PyExc_ValueError, "Role.costume_number value must be a int.");
   return -1;
 }
 
