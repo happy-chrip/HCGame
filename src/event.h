@@ -1,6 +1,4 @@
-//
-// Created by Administrator on 2026/3/24.
-//
+// Created by ABai on 2026/3/24.
 
 #ifndef HCGAME_EVENT_H
 #define HCGAME_EVENT_H

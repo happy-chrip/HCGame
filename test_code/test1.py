@@ -1,4 +1,4 @@
-GROUP_LENGTH: int = 245
+GROUP_LENGTH: int = 100
 
 from pathlib import Path
 import time

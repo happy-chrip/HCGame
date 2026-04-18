@@ -1,7 +1,6 @@
 // Created by ABai on 2026/3/24.
 
-#define max(a, b) ((a > b) ? a : b)
-#define min(a, b) ((a < b) ? a : b)
+
 #include "role.h"
 #include "HCGame.h"
 #include "log.h"
@@ -10,6 +9,13 @@
 #include <SDL3/SDL.h>
 #include <stdlib.h>
 #include <structmember.h>
+
+#ifndef max
+#define max(a, b) ((a > b) ? a : b)
+#endif
+#ifndef min
+#define min(a, b) ((a < b) ? a : b)
+#endif
 
 static unsigned int now_role_count = 0;
 
@@ -362,14 +368,14 @@ static PyObject *HC_Role_get_costume_number(HC_Role *self, void *closure) {
   return Py_NewRef(self->costume_number);
 }
 
-
 static int HC_Role_set_costume_number(HC_Role *self, PyObject *new_value,
                                       void *closure) {
   if (PyLong_Check(new_value)) {
     long compare_number = PyLong_AsLong(new_value);
     if (!(0 < compare_number < PyList_GET_SIZE(self->costume_list))) {
-      PyErr_SetString(PyExc_TypeError,
-                      "Role.costume_number value must in (0, len(self.costume_list)).");
+      PyErr_SetString(
+          PyExc_TypeError,
+          "Role.costume_number value must in (0, len(self.costume_list)).");
       return -1;
     }
     Py_XDECREF(self->costume_number);

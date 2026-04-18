@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).parent
 module = Extension(
     "HCGame",  # 模块名
     sources=["src/HCGame.c", "src/position.c", "src/display.c", "src/surface.c", "src/event.c", "src/role.c",
-             "src/log.c"],  # C 文件路径
+             "src/key.c", "src/log.c"],  # C 文件路径
     include_dirs=[str(BASE_DIR / "third_include/SDL")],
     library_dirs=[str(BASE_DIR / "third_lib")],
     libraries=["SDL3"],

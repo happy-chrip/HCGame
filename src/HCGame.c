@@ -5,6 +5,7 @@
 #include "event.h"
 #include "surface.h"
 #include "position.h"
+#include "key.h"
 
 static PyObject *add(PyObject *self, PyObject *args) {
     int a, b;
@@ -29,19 +30,20 @@ static void HCGame_free(void *module) {
 
 // 方法列表
 static PyMethodDef MyModuleMethods[] = {
-        {"add",                   add,                                            METH_VARARGS, NULL},
-        {"has_quit_event",        HC_Event_has_quit_event,                        METH_NOARGS,  NULL},
-        {"load_image_as_surface", (PyCFunction) HC_Surface_load_image_as_surface, METH_KEYWORDS |
-                                                                                  METH_VARARGS, "Load a Surface from image path."},
-        // 结束标记，表示写完了函数声明
-        {NULL, NULL, 0,                                                                         NULL}
-};
+    {"add", add, METH_VARARGS, NULL},
+    {"has_quit_event", HC_Event_has_quit_event, METH_NOARGS, NULL},
+    {"load_image_as_surface", (PyCFunction)HC_Surface_load_image_as_surface,
+     METH_KEYWORDS | METH_VARARGS, "Load a Surface from image path."},
+    {"key_pressed", (PyCFunction)HC_Key_key_pressed,
+     METH_KEYWORDS | METH_VARARGS, "Get key state from name of one key."},
+    // 结束标记，表示写完了函数声明
+    {NULL, NULL, 0, NULL}};
 
 // 模块定义
 static struct PyModuleDef moduleDef = {
         .m_base = PyModuleDef_HEAD_INIT,
-        .m_name = "HCGame",   // 模块名（import CLib）
-        .m_doc = "C LIB API",
+        .m_name = "HCGame",   // 模块名（import HCGame）
+        .m_doc = "C LIB API of HCGame",
         .m_size = -1,
         .m_methods = MyModuleMethods,
         .m_free = HCGame_free

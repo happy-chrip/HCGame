@@ -5,6 +5,9 @@ def add(a: int, b: int) -> int:
 def has_quit_event() -> bool:
     ...
 
+def key_pressed(key_name: str) -> bool:
+    ...
+
 class Role:
     def __init__(self):
         self.costume_list: list = []    # 只读
@@ -13,8 +16,8 @@ class Role:
         self.width_scale: float = 1.0
         self.height_scale: float = 1.0
         self.alpha: float = 1.0
-        self.flip_x: bool = 0
-        self.flip_y: bool = 0
+        self.flip_x: bool = False
+        self.flip_y: bool = False
         self.facing_angle: float = 0
         self.position: Position = Position(0, 0)
         ...
@@ -28,6 +31,7 @@ class Role:
         ...
 
     def collide(self, target_role: Role):
+        ...
 
 
 class __Display:

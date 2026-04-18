@@ -17,7 +17,7 @@ temp_surface = HCGame.load_image_as_surface(str(Path(__file__).parent / "小可�
 for i in range(1000):
     a = HCGame.Role()
     a.load_image_from_surface(temp_surface)
-    a.buffer()
+    # a.buffer()
     group.append(a)
 def get_fps():
     _last_time = time.time()
@@ -50,4 +50,4 @@ while not HCGame.has_quit_event():
     # time.sleep(0.75)
     now_fps, max_fps = next(fps)
     print(f"\rnow_fps={now_fps: <10.2f} max_fps={max_fps: <15.2f}", end="")
-print("\n程序跑到这啦！")
+print("\n程序跑到这啦! ")
